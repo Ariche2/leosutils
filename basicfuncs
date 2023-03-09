@@ -1,0 +1,5 @@
+#Basic functions
+yell() { echo "$0: $*" >&2; }
+die() { yell "${@:2} ($1)"; exit $1; }
+try() { "$@" || die $? "cannot $*"; }
+printline() {eval printf -- '-%.0s' {1..$(tput cols)} && printf '\n'}
